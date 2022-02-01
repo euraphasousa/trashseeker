@@ -1,0 +1,57 @@
+body{
+    background-image: url("../images/gif.gif");
+background-repeat: no-repeat;
+    background-size: cover;
+}
+
+img{
+    height: 300px;
+    width: 600px;
+    text-align: center;
+    margin: auto;
+}
+.frame_img{
+    text-align: center;
+    margin: 10px -20px 0 0;
+}
+
+.botao{
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px 20px 20px 20px;
+    background-color: #9EC73C;
+    color: whitesmoke;
+    border: 5px solid #569333 ;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
+
+}
+.botao:hover{
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px 20px 20px 20px;
+    background-color: #569333;
+    color: whitesmoke;
+    text-decoration: none;
+    border: 5px solid #9EC73C;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
+    animation: ease-in 0.7s;
+
+}
+
+.box{
+    width: 500px;
+    height: 270px;
+    background-color: transparent;
+    margin: auto ;
+    text-align: center;
+    border: 2px transparent;
+    position: relative;
+    top: -5rem;
+
+}
+
+.botao-group{
+    margin-top: 110px;
+}
