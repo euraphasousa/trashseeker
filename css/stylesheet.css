@@ -2,9 +2,11 @@ body{
     background-image: url("../images/gif.gif");
 background-repeat: no-repeat;
     background-size: cover;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
-img{
+.img_logo{
     height: 300px;
     width: 600px;
     text-align: center;
@@ -42,7 +44,7 @@ img{
 
 .box{
     width: 500px;
-    height: 270px;
+    height: 500px;
     background-color: transparent;
     margin: auto ;
     text-align: center;
@@ -54,4 +56,13 @@ img{
 
 .botao-group{
     margin-top: 110px;
+}
+
+.audio{
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    width: 20%;
+    height: auto;
+    z-index: 2;
 }
