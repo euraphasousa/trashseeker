@@ -1,0 +1,133 @@
+body{
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+#fundo{
+    position: absolute;
+    z-index: -100;
+    width: 100%;
+    height: 100%;
+
+}
+#fundodrown,#vermelho,#verde,#fundorain{
+    position: absolute;
+    width: 100%;
+    z-index: -100;
+    display: none;
+}
+
+#chuva{
+    position: absolute;
+    width: 100%;
+    z-index: 50;
+    display: none;
+    height: 1180px;
+}
+
+
+.img_logo{
+    height: 300px;
+    width: 600px;
+    text-align: center;
+    margin: auto;
+}
+.frame_img{
+    text-align: center;
+    margin: 0 -20px 0 0;
+}
+
+.botao{
+    min-width: 320px;
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px 20px 20px 20px;
+    background-color: #9EC73C;
+    color: whitesmoke;
+    border: 5px solid #569333 ;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
+
+}
+.botao:hover{
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px 20px 20px 20px;
+    background-color: #569333;
+    color: whitesmoke;
+    text-decoration: none;
+    border: 5px solid #9EC73C;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
+    animation: ease-in 0.7s;
+
+}
+
+.box{
+    width: 500px;
+    height: 500px;
+    background-color: transparent;
+    margin: auto ;
+    text-align: center;
+    border: 2px transparent;
+    position: relative;
+    top: -5rem;
+
+}
+
+.botao-group{
+    margin-top: 110px;
+}
+
+.audio{
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    width: 20%;
+    height: auto;
+    z-index: 2;
+}
+
+#pg_escolher,#pg_dificuldade{
+    display: none;
+}
+
+#pg_perdeu{
+    display: none;
+}
+
+#poste{
+    position: absolute;
+    left: 921px;
+    display: none;
+    top: 118px;
+}
+
+#jogdrown{
+    position: absolute;
+    left: 859px;
+    display: none;
+    height: 150px;
+}
+
+#agua{
+    display: none;
+    position: absolute;
+    width: 100%;
+}
+
+#jograin {
+    position: absolute;
+    top: 775px;
+    display: none;
+    height: 175px;
+    z-index: 51;
+}
+
+#hearts{
+    text-align: center;
+    display: none;
+}
+
+#heart1,#heart2,#heart3{
+    height: 85px;
+}
