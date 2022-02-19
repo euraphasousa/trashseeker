@@ -30,6 +30,9 @@ onload = function (){
     }
     document.getElementById("rain").onclick = rain;
 
+    document.getElementById("audio").onclick = function (){
+    }
+
 }
 
 var dif;
