@@ -15,6 +15,15 @@ body{
     display: none;
 }
 
+#chuva{
+    position: absolute;
+    width: 100%;
+    z-index: 50;
+    display: none;
+    height: 1180px;
+}
+
+
 .img_logo{
     height: 300px;
     width: 600px;
@@ -109,4 +118,14 @@ body{
     top: 775px;
     display: none;
     height: 175px;
+    z-index: 51;
+}
+
+#hearts{
+    text-align: center;
+    display: none;
+}
+
+#heart1,#heart2,#heart3{
+    height: 85px;
 }

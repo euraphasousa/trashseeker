@@ -136,7 +136,9 @@ function rain (){
     document.getElementById("fundo").style.display = "none";
     document.getElementById("fundorain").style.display = "block";
     document.getElementById("jograin").style.display = "block";
-    document.getElementById("jograin").style.left = 50 + "px"
+    document.getElementById("hearts").style.display = "block";
+    document.getElementById("jograin").style.left = 50 + "px";
+    setInterval(chuva,500);
 
     onkeydown = function (event){
         movrain(event);
@@ -148,10 +150,48 @@ function movrain (event){
     switch (event.keyCode){
         case 39:{
             document.getElementById("jograin").style.left = parseInt(document.getElementById("jograin").style.left) + 15 + "px";
+
+            if (document.getElementById("chuva").style.display != "none"){
+                document.getElementById("heart3").src = "images/noheart.png";
+                setTimeout(danorain,200);
+                setTimeout(raindano,400);
+                setTimeout(danorain,600);
+                setTimeout(raindano,800);
+            }
+
         }
         break;
         case 68:{
             document.getElementById("jograin").style.left = parseInt(document.getElementById("jograin").style.left) + 15 + "px";
+
+            if (document.getElementById("chuva").style.display != "none"){
+                document.getElementById("heart3").src = "images/noheart.png";
+                setTimeout(danorain,200);
+                setTimeout(raindano,400);
+                setTimeout(danorain,600);
+                setTimeout(raindano,800);
+            }
+
         }
+
     }
+}
+
+function chuva(){
+    var res = Math.floor(Math.random()*2);
+    if (res === 0){
+        document.getElementById("chuva").style.display = "block";
+    }
+    if (res === 1){
+        document.getElementById("chuva").style.display = "none";
+
+    }
+}
+
+function danorain(){
+    document.getElementById("jograin").src = "images/jograindano.png";
+}
+
+function raindano(){
+    document.getElementById("jograin").src = "images/jograin.png";
 }
