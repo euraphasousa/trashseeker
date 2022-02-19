@@ -8,23 +8,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/icon.png">
     <script src="js.js"></script>
 </head>
 
 
 <body>
 
-<img class="fundo" src="images/gif.gif">
+<img id="fundo" src="images/gif.gif">
+<img id="fundodrown" src="images/cenario.jpeg">
+<img id="vermelho" src="images/vermelho.jpg">
+<img id="verde" src="images/verde.jpg">
+<img id="fundorain" src="images/rainfundo.jpg">
+
 
 <div class="audio">
     <img src="images/testaudio.png" class="audio">
 </div>
 
-<div class="container-fluid">
+<div id="logo" class="container-fluid">
     <div class="frame_img">
         <img src="images/logo%202-08-08.png" class="img_logo">
 
+    </div>
 </div>
+
     <div class="box">
 
     <div class="botao-group" id="pg_inicial">
@@ -32,20 +40,37 @@
         <br>
         <a class="botao" type="button" id="comojogar">Como Jogar</a>
         <br>
-        <a class="botao" type="button"id="def">Definições</a>
+        <a class="botao" type="button" id="def">História</a>
     </div>
 
         <div class="botao-group" id="pg_escolher" style="padding-top: 55px">
-            <a class="botao" id="trashrun">Trash Run</a>
-            <br><br>
+            <a class="botao" type="button" id="trashrun">Trash Run</a>
+            <br>
             <a class="botao" type="button" id="dontdrown">Don't Drown</a>
             <br>
-            <a class="botao" type="button" id="caution">Caution, Rain!</a>
+            <a class="botao" type="button" id="rain">Caution, Rain!</a>
         </div>
 
-    </div>
+        <div class="botao-group" id="pg_dificuldade" style="padding-top: 55px">
+            <a class="botao" type="button" id="facil">Fácil</a>
+            <br>
+            <a class="botao" type="button" id="norm">Normal</a>
+            <br>
+            <a class="botao" type="button" id="dif">Difícil</a>
+        </div>
+
+        <div class="botao-group" id="pg_perdeu" style="padding-top: 55px">
+            <a class="botao" type="button" id="tenta">Tenta Outra Vez</a>
+            <br>
+            <a class="botao" type="button" id="inicio">Início</a>
+        </div>
 
 </div>
+
+<img id="poste" src="images/poste.png">
+<img id="jogdrown" src="images/jogador.png">
+<img id="jograin" src="images/jograin.png">
+<img id="agua" src="images/agua.jpg">
 
 
 </body>
