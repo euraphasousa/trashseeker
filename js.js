@@ -1,5 +1,5 @@
 onload = function (){
-    alert("'F11' or 'CTRL + CMND + F' for a better experience!");
+    alert("'F11' ou 'CTRL + CMND + F' para uma melhor experiência!");
 
     document.getElementById("jogar").onclick = function (){
         document.getElementById("pg_escolher").style.display = "block"
