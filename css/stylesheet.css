@@ -1,18 +1,23 @@
 body{
     overflow-y: hidden;
     overflow-x: hidden;
+    font-family: 'Press Start 2P', cursive;
 }
 #fundo{
     position: absolute;
     z-index: -100;
-    width: 100%;
+    left: -2px;
+    top: -2px;
+    width: 101%;
+    height: 101%;
 
 }
-#fundodrown,#vermelho,#verde,#fundorain{
+#fundodrown,#vermelho,#verde,#fundorain,#fundorun{
     position: absolute;
     width: 100%;
     z-index: -100;
     display: none;
+    height: 100%;
 }
 
 #chuva{
@@ -44,6 +49,7 @@ body{
     border: 5px solid #569333 ;
     font-family: 'Press Start 2P', cursive;
     font-size: 20px;
+    min-width: 320px;
 
 }
 .botao:hover{
@@ -118,7 +124,6 @@ body{
     top: 775px;
     display: none;
     height: 175px;
-    z-index: 51;
 }
 
 #hearts{
@@ -129,3 +134,81 @@ body{
 #heart1,#heart2,#heart3{
     height: 85px;
 }
+
+#barco{
+    position: relative;
+    height: 200px;
+    left: 130px;
+    top: 740px;
+    display: none;
+}
+
+#espuma{
+    position: absolute;
+    height: 275px;
+    left: 100px;
+    top: 710px;
+    display: none;
+}
+
+.salto{
+    animation: salto 0.7s linear;
+}
+
+@keyframes salto {
+    0% {
+        top: 740px;
+    }
+
+    30% {
+        top: 575px;
+    }
+
+    50% {
+        top: 450px;
+    }
+
+    80% {
+        top: 575px;
+    }
+
+    100% {
+        top: 740px;
+    }
+}
+
+#obstaculo{
+    position: absolute;
+    height: 110px;
+    top: 830px;
+    left: 1620px;
+    display: none;
+
+    animation: obstaculo 1.3s infinite;
+}
+
+@keyframes obstaculo {
+    0% {
+        left: 1920px;
+    }
+    100% {
+        left: -350px;
+    }
+}
+
+#score{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+    display: none;
+    color: red;
+    font-size: 60px;
+    text-align: center;
+    top: 500px;
+    white-space: nowrap
+}
+
+

@@ -1,15 +1,25 @@
 onload = function (){
     alert("'F11' ou 'CTRL + CMND + F' para uma melhor experiência!");
-
     document.getElementById("jogar").onclick = function (){
-        document.getElementById("pg_escolher").style.display = "block"
-        document.getElementById("pg_inicial").style.display = "none"
+        document.getElementById("pg_escolher").style.display = "block";
+        document.getElementById("pg_inicial").style.display = "none";
     }
     document.getElementById("dontdrown").onclick = function (){
-        document.getElementById("pg_dificuldade").style.display = "block"
-        document.getElementById("pg_escolher").style.display = "none"
+        document.getElementById("pg_dificuldade").style.display = "block";
+        document.getElementById("pg_escolher").style.display = "none";
+        jogo = "drown"
     }
-    document.getElementById("tenta").onclick = drown;
+    document.getElementById("tenta").onclick = function (){
+        if (jogo === "drown"){
+            drown();
+        }
+        if (jogo === "rain"){
+            rain();
+        }
+        if (jogo === "trashrun"){
+            trashrun();
+        }
+    }
     document.getElementById("facil").onclick = function (){
         dif = 1
         drown();
@@ -24,24 +34,37 @@ onload = function (){
     }
     document.getElementById("inicio").onclick = function (){
         document.getElementById("vermelho").style.display = "none";
+        document.getElementById("verde").style.display = "none";
         document.getElementById("pg_inicial").style.display = "block";
         document.getElementById("fundo").style.display = "block";
         document.getElementById("pg_perdeu").style.display = "none";
     }
-    document.getElementById("rain").onclick = rain;
+    document.getElementById("rain").onclick = function (){
+        rain();
+        jogo = "rain"
+    }
+    document.getElementById("trashrun").onclick = function(){
+        trashrun();
+        jogo = "trashrun"
+    }
 
 }
 
 var dif;
 var bonecodrown;
 var aguadrown;
-var drownres;
+var resultado;
+var n;
+var jogo;
+var rng;
+var points;
+var highscore = 0;
 
 
 function drown(){
-    document.getElementById("pg_perdeu").style.display = "none"
-    document.getElementById("vermelho").style.display = "none"
-    document.getElementById("verde").style.display = "none"
+    document.getElementById("pg_perdeu").style.display = "none";
+    document.getElementById("vermelho").style.display = "none";
+    document.getElementById("verde").style.display = "none";
     document.getElementById("pg_dificuldade").style.display = "none";
     document.getElementById("fundo").style.display = "none";
     document.getElementById("logo").style.display = "none";
@@ -50,7 +73,7 @@ function drown(){
     document.getElementById("jogdrown").style.display = "block";
     document.getElementById("jogdrown").style.top = 810 + "px";
     document.getElementById("agua").style.display = "block";
-    document.getElementById("agua").style.top = 1080 + "px"
+    document.getElementById("agua").style.top = 1080 + "px";
     descida = setInterval(desce_jogador,500);
     subida = setInterval(subida_agua,25);
     colisao = setInterval(drowncolisao,1);
@@ -76,11 +99,11 @@ function movdrown(event,vel){
                 document.getElementById("jogdrown").style.top = parseInt(document.getElementById("jogdrown").style.top) - vel + "px";
             }
             else{
-                drownres = "ganhou";
+                resultado = "ganhou";
                 fim_drown();
             }
     }
-    return drownres;
+    return resultado;
 
 }
 
@@ -105,10 +128,10 @@ function drowncolisao(){
     aguadrown = parseInt(document.getElementById("agua").style.top);
 
     if (bonecodrown > aguadrown){
-        drownres = "perdeu";
+        resultado = "perdeu";
         fim_drown();
     }
-    return drownres;
+    return resultado;
 
 }
 
@@ -122,23 +145,28 @@ function fim_drown(){
     document.getElementById("jogdrown").style.display = "none";
     document.getElementById("fundodrown").style.display = "none";
     document.getElementById("poste").style.display = "none";
-    if (drownres === "perdeu"){
+    if (resultado === "perdeu"){
         document.getElementById("vermelho").style.display = "block";
     }
-    else if (drownres === "ganhou"){
+    else if (resultado === "ganhou"){
         document.getElementById("verde").style.display = "block";
     }
 }
 
 function rain (){
-    document.getElementById("logo").style.display = "none";
-    document.getElementById("pg_escolher").style.display = "none"
+    document.getElementById("heart1").src = "images/heart.png";
+    document.getElementById("heart2").src = "images/heart.png";
+    document.getElementById("heart3").src = "images/heart.png";
+    document.getElementById("pg_perdeu").style.display = "none";
+    document.getElementById("logo").style.display = "none";;
+    document.getElementById("pg_escolher").style.display = "none";
     document.getElementById("fundo").style.display = "none";
     document.getElementById("fundorain").style.display = "block";
     document.getElementById("jograin").style.display = "block";
     document.getElementById("hearts").style.display = "block";
     document.getElementById("jograin").style.left = 50 + "px";
-    setInterval(chuva,500);
+    n = 0;
+    chuvarng = setInterval(chuva,500);
 
     onkeydown = function (event){
         movrain(event);
@@ -157,8 +185,17 @@ function movrain (event){
                 setTimeout(raindano,400);
                 setTimeout(danorain,600);
                 setTimeout(raindano,800);
+                n++;
             }
-
+            if (n == 2){
+                document.getElementById("heart2").src = "images/noheart.png";
+            }
+            if (n == 3){
+                document.getElementById("heart1").src = "images/noheart.png";
+                resultado = "perdeu";
+                fim_rain()
+            }
+        return resultado;
         }
         break;
         case 68:{
@@ -170,9 +207,18 @@ function movrain (event){
                 setTimeout(raindano,400);
                 setTimeout(danorain,600);
                 setTimeout(raindano,800);
+                n++;
             }
-
+            if (n == 2){
+                document.getElementById("heart2").src = "images/noheart.png"
+            }
+            if (n == 3) {
+                document.getElementById("heart1").src = "images/noheart.png"
+                resultado = "perdeu";
+                fim_rain();
+            }
         }
+        return resultado;
 
     }
 }
@@ -194,4 +240,117 @@ function danorain(){
 
 function raindano(){
     document.getElementById("jograin").src = "images/jograin.png";
+}
+
+function fim_rain(){
+    document.getElementById("fundorain").style.display = "none";
+    document.getElementById("jograin").style.display = "none";
+    document.getElementById("hearts").style.display = "none";
+    document.getElementById("chuva").style.display = "none";
+    document.getElementById("pg_perdeu").style.display = "block";
+    document.getElementById("logo").style.display = "block";
+    clearInterval(chuvarng)
+    if (resultado === "perdeu"){
+        document.getElementById("vermelho").style.display = "block";
+    }
+    else if (resultado === "ganhou"){
+        document.getElementById("verde").style.display = "block";
+    }
+}
+
+
+function salto(){
+    if (document.getElementById("barco").classList != "salto"){
+        document.getElementById("barco").classList.add("salto");
+        setTimeout(function (){
+            document.getElementById("barco").classList.remove("salto");
+        },650)
+    }
+}
+
+function movrun(event){
+    switch (event.keyCode){
+        case 32:{
+            if (parseInt(document.getElementById("barco").style.top) != 740) {
+                    document.getElementById("espuma").style.display= "none";
+                    if (document.getElementById("vermelho").style.display != "block"){
+                        setTimeout(function (){document.getElementById("espuma").style.display= "block";},600);
+                    }
+            }
+            salto();
+        }
+    }
+}
+
+function fim_trashrun(){
+    document.getElementById("fundorun").style.display = "none";
+    document.getElementById("barco").style.display = "none";
+    document.getElementById("espuma").style.display = "none";
+    document.getElementById("obstaculo").style.display = "none";
+    document.getElementById("pg_perdeu").style.display = "block";
+    document.getElementById("logo").style.display = "block";
+    document.getElementById("score").style.display = "none";
+    clearInterval(vivo);
+    clearInterval(obs)
+    setTimeout(function (){document.getElementById("espuma").style.display = "none"},100);
+    setTimeout(function (){document.getElementById("espuma").style.display = "none"},200);
+    setTimeout(function (){document.getElementById("espuma").style.display = "none"},300);
+    setTimeout(function (){document.getElementById("espuma").style.display = "none"},400);
+    setTimeout(function (){document.getElementById("espuma").style.display = "none"},500);
+    setTimeout(function (){document.getElementById("espuma").style.display = "none"},600);
+
+    document.getElementById("vermelho").style.display = "block";
+}
+
+function trashrun(){
+    document.getElementById("pg_escolher").style.display = "none";
+    document.getElementById("pg_perdeu").style.display = "none";
+    document.getElementById("fundo").style.display = "none";
+    document.getElementById("vermelho").style.display = "none";
+    document.getElementById("barco").style.display = "block";
+    document.getElementById("obstaculo").style.display = "block";
+    document.getElementById("fundorun").style.display = "block";
+    document.getElementById("espuma").style.display = "block";
+    obs = setInterval(imgobs,1300);
+    points = 0
+    document.getElementById("score").innerHTML = points + " | " + highscore;
+    document.getElementById("score").style.display = "block";
+
+    onkeydown = function (event){
+        movrun(event);
+    }
+
+    vivo = setInterval(function () {
+        var drtbarco = parseInt(window.getComputedStyle(document.getElementById("barco")).getPropertyValue("top"));
+        var esqobs = parseInt(
+            window.getComputedStyle(document.getElementById("obstaculo")).getPropertyValue("left"));
+
+        if (rng != 1 ){
+            if (esqobs < 346 && esqobs > -154 && drtbarco >= 630) {
+                fim_trashrun();
+            }
+        }
+        if (rng == 1){
+            if (esqobs < 346 && esqobs > -154 && drtbarco >= 630) {
+                points += 10;
+                if (highscore<points){
+                    highscore = points;
+                }
+                document.getElementById("score").innerHTML = points + " | " + highscore;
+            }
+        }
+    }, 10);
+}
+
+function imgobs(){
+    rng = Math.floor((Math.random()*3) + 1);
+    if (rng == 1){
+        document.getElementById("obstaculo").src = "images/lixo.png";
+    }
+    if (rng == 2){
+        document.getElementById("obstaculo").src = "images/moliceiro.png";
+    }
+    if (rng == 3){
+        document.getElementById("obstaculo").src = "images/tronco.png";
+    }
 }
