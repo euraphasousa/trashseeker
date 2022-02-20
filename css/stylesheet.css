@@ -12,7 +12,7 @@ body{
     height: 101%;
 
 }
-#fundodrown,#vermelho,#verde,#fundorain,#fundorun{
+#fundodrown,#vermelho,#verde,#fundorain,#fundorun,#imgcomo1,#imgcomo2,#imgcomo3{
     position: absolute;
     width: 100%;
     z-index: -100;
@@ -91,7 +91,7 @@ body{
     z-index: 2;
 }
 
-#pg_escolher,#pg_dificuldade{
+#pg_escolher,#pg_dificuldade,#pg_como{
     display: none;
 }
 
@@ -184,7 +184,7 @@ body{
     left: 1620px;
     display: none;
 
-    animation: obstaculo 1.3s infinite;
+    animation: obstaculo 1.5s infinite;
 }
 
 @keyframes obstaculo {
@@ -208,7 +208,8 @@ body{
     font-size: 60px;
     text-align: center;
     top: 500px;
-    white-space: nowrap
+    white-space: nowrap;
 }
+
 
 

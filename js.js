@@ -47,6 +47,28 @@ onload = function (){
         trashrun();
         jogo = "trashrun"
     }
+    document.getElementById("como").onclick = function (){
+        document.getElementById("pg_como").style.display = "block";
+        document.getElementById("pg_inicial").style.display = "none";
+    }
+    document.getElementById("trashruncomo").onclick = function (){
+        document.getElementById("logo").style.display = "none";
+        document.getElementById("pg_como").style.display = "none";
+        document.getElementById("fundo").style.display = "none";
+        document.getElementById("imgcomo1").style.display = "block";
+    }
+    document.getElementById("dontdrowncomo").onclick = function (){
+        document.getElementById("logo").style.display = "none";
+        document.getElementById("pg_como").style.display = "none";
+        document.getElementById("fundo").style.display = "none";
+        document.getElementById("imgcomo3").style.display = "block";
+    }
+    document.getElementById("raincomo").onclick = function (){
+        document.getElementById("logo").style.display = "none";
+        document.getElementById("pg_como").style.display = "none";
+        document.getElementById("fundo").style.display = "none";
+        document.getElementById("imgcomo3").style.display = "block";
+    }
 
 }
 
@@ -59,6 +81,7 @@ var jogo;
 var rng;
 var points;
 var highscore = 0;
+var res = 1;
 
 
 function drown(){
@@ -98,7 +121,7 @@ function movdrown(event,vel){
             if (parseInt(document.getElementById("jogdrown").style.top) > 170 ){
                 document.getElementById("jogdrown").style.top = parseInt(document.getElementById("jogdrown").style.top) - vel + "px";
             }
-            else{
+            else if (document.getElementById("fundodrown").style.display != "none"){
                 resultado = "ganhou";
                 fim_drown();
             }
@@ -158,7 +181,7 @@ function rain (){
     document.getElementById("heart2").src = "images/heart.png";
     document.getElementById("heart3").src = "images/heart.png";
     document.getElementById("pg_perdeu").style.display = "none";
-    document.getElementById("logo").style.display = "none";;
+    document.getElementById("logo").style.display = "none";
     document.getElementById("pg_escolher").style.display = "none";
     document.getElementById("fundo").style.display = "none";
     document.getElementById("fundorain").style.display = "block";
@@ -166,7 +189,7 @@ function rain (){
     document.getElementById("hearts").style.display = "block";
     document.getElementById("jograin").style.left = 50 + "px";
     n = 0;
-    chuvarng = setInterval(chuva,500);
+    setTimeout(chuvarng = setInterval(chuva,500),300);
 
     onkeydown = function (event){
         movrain(event);
@@ -177,7 +200,7 @@ function rain (){
 function movrain (event){
     switch (event.keyCode){
         case 39:{
-            document.getElementById("jograin").style.left = parseInt(document.getElementById("jograin").style.left) + 15 + "px";
+            document.getElementById("jograin").style.left = parseInt(document.getElementById("jograin").style.left) + 90 + "px";
 
             if (document.getElementById("chuva").style.display != "none"){
                 document.getElementById("heart3").src = "images/noheart.png";
@@ -195,11 +218,17 @@ function movrain (event){
                 resultado = "perdeu";
                 fim_rain()
             }
+            if (n != 3){
+                if (parseInt(window.getComputedStyle(document.getElementById("jograin")).getPropertyValue("left")) > 1789){
+                    resultado = "ganhou";
+                    fim_rain();
+                }
+            }
         return resultado;
         }
         break;
         case 68:{
-            document.getElementById("jograin").style.left = parseInt(document.getElementById("jograin").style.left) + 15 + "px";
+            document.getElementById("jograin").style.left = parseInt(document.getElementById("jograin").style.left) + 90 + "px";
 
             if (document.getElementById("chuva").style.display != "none"){
                 document.getElementById("heart3").src = "images/noheart.png";
@@ -217,6 +246,12 @@ function movrain (event){
                 resultado = "perdeu";
                 fim_rain();
             }
+            if (n != 3){
+                if (parseInt(window.getComputedStyle(document.getElementById("jograin")).getPropertyValue("left")) > 1789){
+                    resultado = "ganhou";
+                    fim_rain();
+                }
+            }
         }
         return resultado;
 
@@ -224,14 +259,13 @@ function movrain (event){
 }
 
 function chuva(){
-    var res = Math.floor(Math.random()*2);
-    if (res === 0){
+    if (res === 1){
         document.getElementById("chuva").style.display = "block";
     }
-    if (res === 1){
+    if (res === 0){
         document.getElementById("chuva").style.display = "none";
-
     }
+    res = Math.floor(Math.random()*2);
 }
 
 function danorain(){
@@ -264,17 +298,17 @@ function salto(){
         document.getElementById("barco").classList.add("salto");
         setTimeout(function (){
             document.getElementById("barco").classList.remove("salto");
-        },650)
+        },700)
     }
 }
 
 function movrun(event){
     switch (event.keyCode){
         case 32:{
-            if (parseInt(document.getElementById("barco").style.top) != 740) {
+            if (parseInt(document.getElementById("barco").style.top) != 740 && document.getElementById("fundorun").style.display != "none") {
                     document.getElementById("espuma").style.display= "none";
                     if (document.getElementById("vermelho").style.display != "block"){
-                        setTimeout(function (){document.getElementById("espuma").style.display= "block";},600);
+                        setTimeout(function (){document.getElementById("espuma").style.display= "block";},700);
                     }
             }
             salto();
@@ -298,6 +332,7 @@ function fim_trashrun(){
     setTimeout(function (){document.getElementById("espuma").style.display = "none"},400);
     setTimeout(function (){document.getElementById("espuma").style.display = "none"},500);
     setTimeout(function (){document.getElementById("espuma").style.display = "none"},600);
+    setTimeout(function (){document.getElementById("espuma").style.display = "none"},700);
 
     document.getElementById("vermelho").style.display = "block";
 }
@@ -311,7 +346,7 @@ function trashrun(){
     document.getElementById("obstaculo").style.display = "block";
     document.getElementById("fundorun").style.display = "block";
     document.getElementById("espuma").style.display = "block";
-    obs = setInterval(imgobs,1300);
+    obs = setInterval(imgobs,1500);
     points = 0
     document.getElementById("score").innerHTML = points + " | " + highscore;
     document.getElementById("score").style.display = "block";
